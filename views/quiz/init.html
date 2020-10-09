@@ -65,7 +65,7 @@
                 answers: [],
                 step: 0,
                 action: "do",
-                csrf: "{{.csrf}}"
+                token: "{{.csrf}}"
             },
             methods: {
                 prev: function () {
@@ -83,7 +83,7 @@
                         url: "{{.base_url}}/quiz/update/{{index .quiz "private_code"}}",
                         data: {
                             answers: JSON.stringify(this.answers),
-                            csrf: this.csrf
+                            token: this.token
                         },
                         success: function (data) {
                             if (data.ok) {

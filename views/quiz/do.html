@@ -93,7 +93,7 @@
                 questions: JSON.parse({{index .quiz "questions_json"}}),
                 answers: [],
                 step: 0,
-                csrf: "{{.csrf}}",
+                token: "{{.csrf}}",
                 display_name: "",
                 action: 'do',
                 result: {
@@ -127,7 +127,7 @@
                         url: "{{.base_url}}/quiz/save/{{index .quiz "public_code"}}",
                         data: {
                             answers: JSON.stringify(this.answers),
-                            csrf: this.csrf,
+                            token: this.token,
                             display_name: this.display_name
                         },
                         success: function (data) {

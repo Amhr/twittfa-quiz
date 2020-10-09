@@ -20,13 +20,13 @@ func NewWebServer() {
 
 	e.Renderer = template.NewTemplate()
 
-	e.Static("/static", "static")
+	e.Static("/quiz/static", "static")
 
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 	e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
-		TokenLookup: "form:csrf",
+		TokenLookup: "form:token",
 	}))
 
 	// Route => handler

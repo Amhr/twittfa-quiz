@@ -77,19 +77,6 @@ var QUESTIONS = []Question{
 		},
 	},
 	{
-		TextFromOthers: "ترجیح میدی ست لباست چه رنگی باشه؟",
-		TextFromUser:   "ترجیح میده ست لباسش چه رنگی باشه؟",
-		Options: []string{
-			"زرد",
-			"گلبه ایی",
-			"قرمز",
-			"مشکی",
-			"زرشکی",
-			"آبی",
-			"صورتی",
-		},
-	},
-	{
 		TextFromOthers: "دوس داری کجا بری مسافرت؟",
 		TextFromUser:   "دوس داره کجا بره مسافرت؟",
 		Options: []string{
