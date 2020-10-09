@@ -25,9 +25,6 @@ func NewWebServer() {
 	// Middleware
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
-	e.Use(middleware.CSRFWithConfig(middleware.CSRFConfig{
-		TokenLookup: "form:token",
-	}))
 
 	// Route => handler
 

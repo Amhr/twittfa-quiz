@@ -4,7 +4,6 @@ import (
 	"WhoKnowsMeapp/config"
 	"WhoKnowsMeapp/internal/app"
 	"encoding/json"
-	"fmt"
 	"github.com/labstack/echo"
 	"net/http"
 )
@@ -38,7 +37,6 @@ func HandlerSaveAnswers(hnm app.App) func(ctx echo.Context) error {
 		}
 
 		answers := ctx.FormValue("answers")
-		csrf := ctx.FormValue("csrf")
 		var items []string
 		err := json.Unmarshal([]byte(answers), &items)
 		if err != nil {
@@ -54,22 +52,11 @@ func HandlerSaveAnswers(hnm app.App) func(ctx echo.Context) error {
 			})
 		}
 
-		bcc := fmt.Sprintf("doquiz_%s_%s", csrf, quiz.PublicCode)
-		_, err = hnm.BigCache.Get(bcc)
-		if err == nil {
-			return ctx.JSON(http.StatusOK, echo.Map{
-				"ok":   false,
-				"data": "قبلا پاسخ داده اید",
-			})
-		}
-
 		result, err := hnm.SaveResult(quiz, items, displayName)
 
 		if err != nil {
 			return err
 		}
-
-		hnm.BigCache.Set(bcc, []byte("yes"))
 
 		return ctx.JSON(http.StatusOK, echo.Map{
 			"ok":   true,
