@@ -1,0 +1,105 @@
+{{ define "content"}}
+    <div class="center" style="padding-top: 100px;">
+        <h3>مدیریت {{index .quiz "display_name" }}</h3>
+        <p>لینک این صفحه رو پیش خودت مخفی نگه دار</p>
+    </div>
+
+    <div class="app" id="app">
+
+        <div class="card">
+            <div class="card-header">
+                لینک های {{index .quiz "display_name"}}
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+                    <span>لینک مدیریت:</span>
+                    <small class="form-text text-muted">این لینک رو پیش خودتون مخفی نگه دارید. از طریق این لینک میتونید
+                        جواب ها رو مشاهده کنید</small>
+                    <div class="input-group">
+                        <input type="text" class="form-control"
+                               style="font-family: Arial;text-align: left;direction: ltr"
+                               value="{{.base_url}}/quiz/edit/{{index .quiz "private_code"}}"
+                               placeholder="{{.base_url}}/quiz/edit/{{index .quiz "private_code"}}">
+                    </div>
+                    <hr>
+                    <span>لینک عمومی:</span>
+                    <small class="form-text text-muted">این لینک رو توی توییتر ، اینستاگرام یا هر جا خواستی منتشر کن تا
+                        دوستات بیان و جواب بدن</small>
+                    <div class="input-group">
+                        <input type="text" class="form-control"
+                               style="font-family: Arial;text-align: left;direction: ltr"
+                               value="{{.base_url}}/quiz/do/{{index .quiz "public_code"}}"
+                               placeholder="{{.base_url}}/quiz/do/{{index .quiz "public_code"}}">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 20px;">
+            <div class="card-header">
+                نتایج کوئیز
+            </div>
+            <div class="card-body">
+                <div class="card-text">
+
+                    <ul class="list-group">
+                        {{range $val := .results}}
+                            <li class="list-group-item d-flex justify-content-between align-items-center"
+                                data-toggle="modal" data-target="#results{{index $val "id"}}">
+                                {{index $val "display_name"}}
+                                <span class="badge badge-primary badge-pill">{{index $val "percent"}}%</span>
+                            </li>
+                            <div class="modal fade" id="results{{index $val "id"}}" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">جواب های
+                                            {{index $val "display_name"}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            {{range $item := index $val "answers"}}
+                                                <h5>{{index $item "question"}}</h5>
+                                                <p>جواب شما : {{index $item "valid_answer"}}</p>
+                                                <p>جواب {{index $val "display_name"}} : {{index $item "answer"}}</p>
+                                            {{end}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {{end}}
+                    </ul>
+
+                    <div class="pagination">
+                        {{if .has_prev_page}}
+                            <a href="{{.base_url}}/quiz/edit/{{index .quiz "private_code"}}?page={{.prev_page}}">صفحه
+                                قبل</a>
+                        {{end}}
+                        {{if .has_next_page}}
+                            <a href="{{.base_url}}/quiz/edit/{{index .quiz "private_code"}}?page={{.next_page}}">صفحه
+                                بعد</a>
+                        {{end}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        const _App = new Vue({
+            el: "#app",
+            delimiters: ['${', '}'],
+            data: {},
+        })
+
+    </script>
+
+
+{{end}}

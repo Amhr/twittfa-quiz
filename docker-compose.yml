@@ -1,0 +1,25 @@
+version: '3.4'
+services:
+  redis:
+    image: "redis"
+    command: redis-server
+    ports:
+      - "1001:6379"
+    environment:
+      - REDIS_REPLICATION_MODE=master
+  mariadb:
+    image: mariadb
+    ports:
+      - "1000:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: passwd
+      MYSQL_DATABASE: whoknowsmeapp
+      MYSQL_USER: user
+      MYSQL_PASSWORD: passwd
+    logging:
+      driver: syslog
+      options:
+        tag: "{{.DaemonName}}(image={{.ImageName}};name={{.Name}};id={{.ID}})"
+    restart: on-failure
+    volumes:
+      - ${PWD}/mariadb:/var/lib/mysql

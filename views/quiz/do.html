@@ -1,0 +1,149 @@
+{{ define "content"}}
+    <div class="center" style="padding-top: 100px;">
+        <h3>پاسخ به {{index .quiz "display_name" }}</h3>
+        <p>به ترتیب به سوالای زیر پاسخ بده ببینم چقدر
+            {{index .quiz "display_name"}}
+            رو میشناسی
+        </p>
+    </div>
+
+    <div class="app" id="app">
+
+        <div v-if="action =='do'">
+            <div class="card" v-if="step < questions.length">
+                <div class="card-header">
+                    سوال ${step+1} از ${questions.length}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${questions[step]["TextFromOthers"]}</h5>
+                    <p class="card-text">
+                    <div class="list-group">
+                        <a v-for="item in questions[step]['Options']" href="#" @click.prevent="ans(item)"
+                           class="list-group-item list-group-item-action">${item}</a>
+                    </div>
+                    <a style="margin-top: 15px;display: block" v-if='step > 0' href="#!" @click.prevent="prev">سوال
+                        قبل</a>
+                    </p>
+                </div>
+            </div>
+            <div class="card" v-if="step  >= questions.length">
+                <div class="card-header">
+                    سوالات پاسخ داده شدند
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">شما به همه سوالات پاسخ دادید</h5>
+                    <div class="card-text">
+                        <p>
+                            برای ذخیره نهایی جواب ها اسمی که میخواید با اون شما رو بشناسه رو وارد کنید و روی ذخیره کلیک
+                            کنید
+                            <br>
+                            اگر میخواید از اول پاسخ بدید روی امتحان دوباره کلیک کنید
+                        </p>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">نام نمایشی شما</label>
+                            <input v-model="display_name" type="text" name="display_name" class="form-control"
+                                   placeholder="وارد کنید">
+                            <small id="emailHelp" class="form-text text-muted">این اسم توی
+                                لیست {{index .quiz "display_name"}} نمایش داده میشه</small>
+                        </div>
+                        <button class="btn btn-danger" @click.prevnet="step=0">امتحان دوباره</button>
+                        <button class="btn btn-primary" @click.prevnet="save">ذخیره و ارسال</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="action == 'wait'">
+            <div class="card">
+                <div class="card-header">
+                    سوالات پاسخ داده شدند
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">درحال ذخیره اطلاعات. لطفا صبر کنید</h5>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="action == 'result'">
+            <div class="card">
+                <div class="card-header">
+                    جواب دریافت شد
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">نتیجه کوئیز</h5>
+                    <p>
+                        شما در مجموع به ${result.score} سوال درست جواب دادید و ${result.percent} درصد جواب درست داشتید
+                    </p>
+                    <p>
+                        <a href="{{.base_url}}/quiz/start" class="btn btn-primary">تو ام کوئیز خودت رو بساز</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        const _App = new Vue({
+            el: "#app",
+            delimiters: ['${', '}'],
+            data: {
+                questions: JSON.parse({{index .quiz "questions_json"}}),
+                answers: [],
+                step: 0,
+                csrf: "{{.csrf}}",
+                display_name: "",
+                action: 'do',
+                result: {
+                    score: 1,
+                    percent: 33
+                }
+            },
+            methods: {
+                prev: function () {
+                    if (this.step > 0)
+                        Vue.set(this, 'step', this.step - 1)
+                },
+                ans: function (ans) {
+                    Vue.set(this.answers, this.step, ans)
+                    Vue.set(this, 'step', this.step + 1)
+                },
+                save: function () {
+
+                    var dn = this.display_name
+                    if (dn.length === 0) {
+                        alert("نام نمایشی خود را وارد کنید")
+                        return;
+                    }
+                    if (this.answers.length !== this.questions.length) {
+                        alert("لطفا به همه سوالات جواب بدید")
+                        return;
+                    }
+                    Vue.set(_App,'action','wait')
+                    $.ajax({
+                        type: "POST",
+                        url: "{{.base_url}}/quiz/save/{{index .quiz "public_code"}}",
+                        data: {
+                            answers: JSON.stringify(this.answers),
+                            csrf: this.csrf,
+                            display_name: this.display_name
+                        },
+                        success: function (data) {
+                            if (data.ok) {
+                                Vue.set(_App,'action','result')
+                                Vue.set(_App,'result',data.data)
+                            } else {
+                                Vue.set(_App,'action','do')
+                                alert(data.data)
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+
+
+{{end}}
