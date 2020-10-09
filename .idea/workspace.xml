@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="45c4eaf5-e8fc-4c02-9a13-afe147df95b1" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="GOROOT" path="/usr/lib/go-1.15" />
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
+  </component>
+  <component name="ProjectId" id="1ibJpTOxdZDBa9jqfXgPNdFCiP9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/internal/app" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.tabs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/internal/app" />
+      <recent name="$PROJECT_DIR$/internal/http" />
+      <recent name="$PROJECT_DIR$/views/quiz" />
+      <recent name="$PROJECT_DIR$/internal/db" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/internal/db" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/public/views" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.conf" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="741" y="352" width="500" height="409" key="#Go_Modules" timestamp="1602170931846">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="741" y="352" width="500" height="409" key="#Go_Modules/72.27.1848.1053@72.27.1848.1053" timestamp="1602170931846" />
+    <state x="1065" y="292" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602175140018">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="1065" y="292" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1602175140018" />
+    <state x="631" y="333" width="713" height="455" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602187325771">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="631" y="333" width="713" height="455" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1602187325771" />
+    <state x="726" y="254" width="530" height="605" key="FileChooserDialogImpl" timestamp="1602240128877">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="726" y="254" width="530" height="605" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1602240128877" />
+    <state width="1228" height="252" key="GridCell.Tab.0.bottom" timestamp="1602188251037">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1228" height="252" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1602188251037" />
+    <state width="1228" height="252" key="GridCell.Tab.0.center" timestamp="1602188251036">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1228" height="252" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1602188251036" />
+    <state width="1228" height="252" key="GridCell.Tab.0.left" timestamp="1602188251036">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1228" height="252" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1602188251036" />
+    <state width="1228" height="252" key="GridCell.Tab.0.right" timestamp="1602188251036">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1228" height="252" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1602188251036" />
+    <state width="318" height="695" key="HiddenNamespacesPopup" timestamp="1602175021570">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="318" height="695" key="HiddenNamespacesPopup/72.27.1848.1053@72.27.1848.1053" timestamp="1602175021570" />
+    <state x="360" y="101" width="1271" height="912" key="SettingsEditor" timestamp="1602188268564">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="360" y="101" width="1271" height="912" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1602188268564" />
+    <state width="623" height="498" key="SwitcherDM" timestamp="1602255578726">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="623" height="498" key="SwitcherDM/72.27.1848.1053@72.27.1848.1053" timestamp="1602255578726" />
+    <state x="848" y="415" width="431" height="324" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1602188391195">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="848" y="415" width="431" height="324" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/72.27.1848.1053@72.27.1848.1053" timestamp="1602188391195" />
+    <state x="466" y="72" width="1050" height="970" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1602187389588">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="466" y="72" width="1050" height="970" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1602187389588" />
+    <state x="614" y="48" width="764" height="1011" key="find.popup" timestamp="1602185246107">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="614" y="48" width="764" height="1011" key="find.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1602185246107" />
+    <state x="575" y="45" width="840" height="1034" key="search.everywhere.popup" timestamp="1602249993261">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="575" y="45" width="840" height="1034" key="search.everywhere.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1602249993261" />
+  </component>
+</project>

@@ -1,0 +1,103 @@
+{{ define "content"}}
+    <div class="center" style="padding-top: 100px;">
+        <h3>آماده سازی کوئیز {{index .quiz "display_name" }}</h3>
+        <p>نوبت اینه که به ترتیب به سوالای پایین جواب بدی.</p>
+    </div>
+
+    <div class="app" id="app">
+
+        <div v-if="action == 'do'">
+            <div class="card" v-if="step < questions.length">
+                <div class="card-header">
+                    سوال ${step+1} از ${questions.length}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">${questions[step]["TextFromUser"]}</h5>
+                    <p class="card-text">
+                    <div class="list-group">
+                        <a v-for="item in questions[step]['Options']" href="#" @click.prevent="ans(item)"
+                           class="list-group-item list-group-item-action">${item}</a>
+                    </div>
+                    <a style="margin-top: 15px;display: block" v-if='step > 0' href="#!" @click.prevent="prev">سوال
+                        قبل</a>
+                    </p>
+                </div>
+            </div>
+            <div class="card" v-if="step  >= questions.length">
+                <div class="card-header">
+                    سوالات پاسخ داده شدند
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">شما به همه سوالات پاسخ دادید. برای ذخیره نهایی جواب ها روی ذخیره کلیک کنید یا
+                        در
+                        غیراینصورت از اول سوالات را پاسخ دهید.
+                        <br>
+                        بعد از ذخیره جواب ها امکان تغییر انها وجود ندارد</h5>
+                    <p class="card-text">
+                        <button class="btn btn-danger" @click.prevnet="step=0">تغییر جواب ها</button>
+                        <button class="btn btn-primary" @click.prevnet="save">ذخیره جواب ها</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="action == 'wait'">
+            <div class="card" v-if="step  >= questions.length">
+                <div class="card-header">
+                    سوالات پاسخ داده شدند
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">درحال ذخیره اطلاعات. لطفا صبر کنید</h5>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        const _App = new Vue({
+            el: "#app",
+            delimiters: ['${', '}'],
+            data: {
+                questions: JSON.parse({{index .quiz "questions_json"}}),
+                answers: [],
+                step: 0,
+                action: "do",
+                csrf: "{{.csrf}}"
+            },
+            methods: {
+                prev: function () {
+                    if (this.step > 0)
+                        Vue.set(this, 'step', this.step - 1)
+                },
+                ans: function (ans) {
+                    Vue.set(this.answers, this.step, ans)
+                    Vue.set(this, 'step', this.step + 1)
+                },
+                save: function () {
+                    Vue.set(_App,'acton','wait')
+                    $.ajax({
+                        type: "POST",
+                        url: "{{.base_url}}/quiz/update/{{index .quiz "private_code"}}",
+                        data: {
+                            answers: JSON.stringify(this.answers),
+                            csrf: this.csrf
+                        },
+                        success: function (data) {
+                            if (data.ok) {
+                                window.location.reload()
+                            } else {
+                                Vue.set(_App,'acton','do')
+                                alert(data.data)
+                            }
+                        }
+                    })
+                }
+            }
+        })
+    </script>
+
+
+{{end}}
